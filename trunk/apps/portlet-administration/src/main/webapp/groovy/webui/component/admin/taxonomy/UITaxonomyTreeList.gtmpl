@@ -1,0 +1,104 @@
+<%
+/**
+ * Created by The eXo Platform SARL
+ * Author : Hoang Van Hung
+ *          hunghvit@gmail.com
+ * Apr 3, 2009
+ */
+%>
+<%
+  import org.exoplatform.ecm.webui.utils.Utils;
+  def allTaxonomyList = uicomponent.getAllTaxonomyTreeList();
+  uicomponent.refresh(uicomponent.getUIPageIterator().getCurrentPage());
+  
+  private String pathTitle(String inputStr, int defauLength) {
+    String sortName = inputStr ;
+    if(inputStr.length() > defauLength) {
+      sortName = "..." + inputStr.substring(inputStr.length() - defauLength, inputStr.length()) ;
+    }
+    return sortName ;
+  }
+%>
+<div class="UITaxonomyTreeList" id="$uicomponent.id">
+  <% if (allTaxonomyList.size() > 5) {%>
+  <div style="margin:1px 0px 5px 0px;">
+    <%
+      uicomponent.getUIPageIterator().setUseMaxSizeSetting(true);
+      _ctx.renderUIComponent(uicomponent.getUIPageIterator())
+    %>
+  </div>
+  <%}%>
+  <table class="UIGrid">
+    <thead>
+      <tr>
+        <th><%=_ctx.appRes("UITaxonomyTreeList.header.name")%></th>
+        <th><%=_ctx.appRes("UITaxonomyTreeList.header.workspace")%></th>
+        <th><%=_ctx.appRes("UITaxonomyTreeList.header.homePath")%></th>
+        <th><%=_ctx.appRes("UITaxonomyTreeList.header.permissions")%></th>
+        <th><%=_ctx.appRes("UITaxonomyTreeList.header.action")%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        def rowClass = "EvenRow";
+        boolean even = true;
+        if (uicomponent.getTaxonomyTreeList().size() > 0) {
+          for (taxonomyTree in uicomponent.getTaxonomyTreeList()) {
+            if(even) rowClass = "EvenRow";  
+            else rowClass =  "OddRow"; 
+            if (!taxonomyTree.isEdit()) {
+              rowClass += " TrashRow";
+            }
+            even = !even;
+        %>
+            <tr class="$rowClass">
+              <td><div class="Text" title="<%=taxonomyTree.getTaxoTreeName().replace("|", " | ")%>"><% if (!taxonomyTree.isEdit()) { %><sup>*** </sup><%}%><%=taxonomyTree.getTaxoTreeName().replace("|", " | ")%></div></td>
+              <td><div class="Text" title="$taxonomyTree.taxoTreeWorkspace">$taxonomyTree.taxoTreeWorkspace</div></td>
+              <td><div class="Text" title="<%=taxonomyTree.getTaxoTreeHomePath().replace("/", " /")%>"><%=taxonomyTree.getTaxoTreeHomePath().replace("/", " /")%></div></td>
+              <td>
+                <div class="Text">
+                  <div class="ShowHideComponent ClearFix" title="$taxonomyTree.taxoTreePermissions" onclick="eXo.ecm.ECMUtils.showHideContentOnRow(this)">
+                    <div class="ShortContentPermission"><a><%=pathTitle(taxonomyTree.taxoTreePermissions, 20)%></a></div>
+                    <div class="FullContentPermission" style="display: none"><a>$taxonomyTree.taxoTreePermissions</a></div>
+                  </div>                  
+                </div>                
+              </td>             
+              <td>
+                <div class="ActionContainer">
+                  <% if (taxonomyTree.isEdit()) { %>
+                    <img src="/eXoResources/skin/sharedImages/Blank.gif" onclick="<%=uicomponent.event("EditTaxonomyTree", Utils.formatNodeName(taxonomyTree.getTaxoTreeName()))%>" title="<%=_ctx.appRes("UITaxonomyTreeList.tooltip.EditTaxonomyTree")%>" alt="<%=_ctx.appRes("UITaxonomyTreeList.tooltip.EditTaxonomyTree")%>" class="Edit16x16Icon" />
+                  <% } else { %>
+                    <img src="/eXoResources/skin/sharedImages/Blank.gif" alt="None Edit" />
+                  <% } %>
+                  <img src="/eXoResources/skin/sharedImages/Blank.gif" onclick="<%=uicomponent.event("Delete", Utils.formatNodeName(taxonomyTree.getTaxoTreeName()))%>" title="<%=_ctx.appRes("UITaxonomyTreeList.tooltip.Delete")%>" alt="<%=_ctx.appRes("UITaxonomyTreeList.tooltip.Delete")%>" class="Delete16x16Icon" />
+                </div>
+              </td>                     
+            </tr>
+        <%
+          }
+        } else {%>
+          <tr class="$rowClass"> 
+            <td colspan="5" style="text-align:center;font-style:italic; color: #EF5604;"><%=_ctx.appRes("UITaxonomyTreeList.msg.no-list")%></td>
+          </tr>
+        <%}%>
+    </tbody>
+  </table>
+  <% if (uicomponent.isTargetInTrash()) { %>
+  <div class="ClearFix">
+    <div style="float: left; display:block; font-style: italic;" class="Text"><sup>*** </sup><%=_ctx.appRes("UITaxonomyTreeList.msg.is-in-trash")%></div>
+  </div>
+  <% } %>
+  <% if (allTaxonomyList.size() > 5) {%>
+  <div style="margin:1px 0px 5px 0px;">
+    <%
+      uicomponent.getUIPageIterator().setUseMaxSizeSetting(false);
+      _ctx.renderUIComponent(uicomponent.getUIPageIterator())
+    %>
+  </div>
+  <%}%>
+  <div class="UIAction">
+	<% for(action in uicomponent.getActions()) { %>
+		<a onclick="<%=uicomponent.event(action)%>" class="ActionButton LightBlueStyle" href="javascript:void(0);"><%=_ctx.appRes("UITaxonomyTreeList.action." + action)%></a>
+	<% } %>
+	</div>
+</div>

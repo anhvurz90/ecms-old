@@ -1,0 +1,209 @@
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%
+  import org.exoplatform.portal.application.PortalRequestContext ;
+  import org.exoplatform.webui.core.UIComponent;
+  import java.util.Iterator;
+  import org.exoplatform.portal.config.model.PortalProperties ;
+  import org.exoplatform.services.seo.SEOService;
+  import org.exoplatform.services.seo.PageMetadataModel;
+  import org.exoplatform.container.ExoContainer;
+  import org.exoplatform.container.ExoContainerContext;
+  import java.util.Enumeration;
+  import java.util.Map; 
+   import java.util.ArrayList;  
+  import org.exoplatform.portal.mop.user.UserNode;
+  import org.exoplatform.portal.webui.portal.UIPortal;
+  import org.exoplatform.portal.webui.util.Util;
+  import org.exoplatform.portal.webui.workspace.UIPortalApplication;
+  import org.exoplatform.portal.webui.workspace.UIWorkingWorkspace;
+		
+  def rcontext = _ctx.getRequestContext() ;
+  String docBase =  rcontext.getRequestContextPath() ;  
+  String skin = uicomponent.getSkin();
+  def portalSkins = uicomponent.getPortalSkins() ;
+  def portletSkins = uicomponent.getPortletSkins() ;
+  def portalJScripts = uicomponent.getPortalJScripts();
+  def scriptsPaths = uicomponent.getJavascriptURLs();
+  def lang = uicomponent.getLocale().getLanguage();
+  def title = rcontext.getTitle();
+  def metaInformation = rcontext.getMetaInformation();
+  def pcontext = (PortalRequestContext)rcontext;  
+  
+  UserNode currentNode = Util.getUIPortal().getSelectedUserNode();
+  String pageReference = currentNode.getPageRef();
+  ExoContainer container = ExoContainerContext.getCurrentContainer() ;
+  
+  def contentParam = "";
+  def contentPath = "";
+  ArrayList paramArray = null;
+  if (!pcontext.useAjax()) {
+  	Enumeration params = pcontext.getRequest().getParameterNames();   
+  	Map paramsMap = pcontext.getRequest().getParameterMap();
+  	if(params.hasMoreElements()) {
+  		paramArray = new ArrayList();
+    	while(params.hasMoreElements()) {
+      		contentParam = params.nextElement().toString();
+      		paramArray.add(pcontext.getRequestParameter(contentParam)); 
+    	}
+  	} 
+  }    
+  boolean hasMetadata = false;
+  def keywords = "";
+  def description = "";
+  def robots = "";
+  PageMetadataModel metaModel = null;
+  try {
+	  SEOService seoService = (SEOService)container.getComponentInstanceOfType(SEOService.class);
+	  if(seoService != null) {	  
+		  metaModel = seoService.getMetadata(paramArray, pageReference);
+		  if(metaModel != null) {
+		  	hasMetadata = true;
+		  	keywords = metaModel.getKeywords();
+		    description = metaModel.getDescription();	
+		    robots = metaModel.getRobotsContent();    
+		  }	   
+	  }
+  } catch(Exception ex) {}
+%>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="$lang" lang="$lang" dir="$dir">
+  <head id="head">
+    <title><%=title%></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <%
+        if(hasMetadata) {
+          if(keywords != null && keywords.length() >0) {
+	        %>
+	          <meta name="keywords" content="<%=keywords%>" />
+	        <% }
+          if(description != null && description.length() >0) {
+          %>
+          	<meta name="description" content="<%=description%>" />
+          <% }
+          if(robots != null && robots.length() >0) {
+          %>
+          	<meta name="robots" content="<%=robots%>" />
+          <% }
+        } else if(metaInformation!= null) {
+	    	Iterator<String> keys = metaInformation.keySet().iterator();
+	    	while(keys.hasNext()) {
+	    		String metaName = keys.next();
+	    		String metaContent = metaInformation.get(metaName);
+	  %>
+	   	<meta name="<%=metaName%>" content="<%=metaContent%>" />
+	  <% } } %>
+	  
+    <link rel="shortcut icon" type="image/x-icon"  href="<%=docBase%>/favicon.ico" />
+    <%for(skinConfig in portalSkins) {
+    def url = skinConfig.createURL();
+    url.setOrientation(orientation);
+    %>
+      <link id="${skinConfig.id}" rel="stylesheet" type="text/css" href="$url" />
+    <%}%>
+    <%for(portletSkin in portletSkins) {
+    def url = portletSkin.createURL();
+    url.setOrientation(orientation);
+    %>
+      <link id="${portletSkin.id}" rel="stylesheet" type="text/css" href= "$url" />
+    <%}%>
+     <script type="text/javascript">
+     // This variable must be used only to initialize other variables otherwise
+     // please use eXo.env.portal.context or eXo.env.portal.context instead
+     // Those 2 last variables cannot be used to initialize variables because 
+     // we cannot be sure that they will be initialized before initializing your script
+      var currentContext = '<%=docBase%>' ;
+    </script>   
+    <%if(org.exoplatform.commons.utils.PropertyManager.isDevelopping()) {
+        for(path in scriptsPaths) { %>
+          <script type="text/javascript" src="<%=path%>"></script>
+    <%  }
+      } else {
+    %>
+        <script type="text/javascript" src="<%=docBase%>/javascript/merged.js"></script>
+    <%}%>
+    <script type="text/javascript">
+      eXo.env.portal.context = '<%=docBase%>' ;
+      <%if(rcontext.getAccessPath() == 0) {%>
+          eXo.env.portal.accessMode = 'public' ;
+      <%} else {%>
+          eXo.env.portal.accessMode = 'private' ;
+      <%}%>
+      eXo.env.portal.portalName = '<%=rcontext.getPortalOwner()%>' ;
+      eXo.env.server.context = '<%=docBase%>' ;
+      eXo.env.server.portalBaseURL = '<%=rcontext.getRequest().getRequestURI()%>' ;
+      eXo.env.server.portalURLTemplate = "<%=uicomponent.getPortalURLTemplate()%>" ;
+      eXo.env.client.skin = '$skin' ;
+      <% 
+        UIPortal portal = uicomponent.findFirstComponentOfType(UIPortal.class);
+        String sessionAliveLevel = (portal == null ? null : portal.sessionAlive) ;
+        boolean canKeepState = sessionAliveLevel == null ? false : !sessionAliveLevel.equals(PortalProperties.SESSION_NEVER) ;
+      %>
+      
+      eXo.portal.portalMode = <%= uicomponent.getModeState() %>;
+      
+      eXo.session.level = '$sessionAliveLevel';
+      eXo.session.canKeepState = $canKeepState;
+      eXo.session.isOpen = $uicomponent.isSessionOpen ;
+      eXo.session.itvTime = ${((PortalRequestContext)rcontext).getRequest().getSession().getMaxInactiveInterval()} ;
+    </script>
+    <script type="text/javascript" src="/eXoResources/javascript/eXo/i18n/I18NMessage.js"></script>
+    <script type="text/javascript" src="/eXoResources/javascript/eXo/i18n/MessageResource_<%=lang%>.js"></script>
+    <script type="text/javascript" src="/eXoStaticResources/ckeditor/ckeditor.js"></script>
+
+    <% 
+      if (portalJScripts != null)
+      {
+        for (jScript in portalJScripts) {
+        %>
+          <script type="text/javascript" src="<%=jScript.getPath()%>"></script>
+        <%
+        }
+     }    
+     def headerElements = rcontext.getExtraMarkupHeadersAsStrings();
+     if (headerElements != null) 
+     {
+       for (element in headerElements)
+       { %>
+        <%=element%>  
+    <% }
+     }     
+    %>
+          
+    <script type="text/javascript">
+      function initLoading(lblLoading, lblAbort) {
+        var ajaxLoading = document.getElementById("AjaxLoadingMask");
+        var loadingText = document.createElement("span");
+        loadingText.className = "LoadingText";
+        loadingText.innerHTML = lblLoading;
+        ajaxLoading.appendChild(loadingText);
+        
+        var loadingBar = document.createElement("span");
+        loadingBar.className = "LoadingProgressBar";
+        ajaxLoading.appendChild(loadingBar);
+        
+        var closeIcon = document.createElement("a");
+        closeIcon.className = "CloseLoadIcon";
+        closeIcon.setAttribute("href", "javascript:ajaxAbort();");
+        closeIcon.setAttribute("title", lblAbort);
+        closeIcon.innerHTML = "&nbsp;";
+        ajaxLoading.appendChild(closeIcon);
+      }
+    </script>
+  </head>
+
+  <body style="height: 100%;">
+    <% 
+      /*Hide All Popup Menu when click on document*/
+      rcontext.getJavascriptManager().addOnLoadJavascript('eXo.core.DOMUtil.hideElements');
+      //rcontext.getJavascriptManager().addOnResizeJavascript('eXo.core.UIMaskLayer.resizeMaskLayer');
+    %>
+ 
+	<div class="$uicomponent.skin" id="UIPortalApplication" style="!height: 100%;">
+		<div class="AjaxLoadingMask" id="AjaxLoadingMask" style="display: none; margin: auto;">
+	  </div>
+    
+    <script type="text/javascript">
+      initLoading('<%=_ctx.appRes("UIPortalApplication.label.Loading")%>', '<%=_ctx.appRes("UIPortalApplication.title.abort")%>');
+    </script>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+  <UISEOForm>
+    <label>
+	  <title>Tiêu đề: </title>
+      <description>Mô tả: </description>
+      <keywords>Từ khóa: </keywords>
+      <language>Ngôn ngữ: </language>
+      <robots>Robots: </robots>
+      <sitemap>Sitemap: </sitemap>
+      <sitemapvisible>Hiển thị trên sitemap</sitemapvisible>
+      <priority>Độ ưu tiên: </priority>
+      <frequency>Tần suất: </frequency>  
+      <option>
+        <Always>Luôn luôn</Always>
+        <Hourly>Hàng giờ</Hourly>
+        <Daily>Hàng ngày</Daily>
+        <Weekly>Hàng tuần</Weekly>
+        <Monthly>Hàng tháng</Monthly>
+        <Yearly>Hàng năm</Yearly>
+        <Never>Không bao giờ</Never>        
+      </option>    
+      <option>
+      	<en>Tiếng Anh</en>
+        <fr>Tiếng Pháp</fr>
+        <ru>Tiếng Nga</ru>
+        <vi>Tiếng Việt Nam</vi>
+        <nl>Tiếng Hà Lan</nl>
+        <de>Tiếng Đức</de>
+        <uk>Tiếng Ucraina</uk>
+        <ar>Tiếng Ả Rập</ar>
+      </option>
+    </label>
+	<tip>
+		<priority>Giá trị hợp lệ từ 0.0 đến 1.0</priority>
+	</tip>  
+    <action>
+      <Save>Cập nhật</Save>
+      <Cancel>Hủy bỏ</Cancel>
+    </action>
+    <msg>
+      <repository-exception>Có lỗi xảy ra trên hệ thộng. Không thể cập nhật được dữ liệu.</repository-exception>	
+    </msg>
+  </UISEOForm>
+  <UISEOPopupWindow>
+  	<title>
+      <UISEOForm>Quản lý SEO</UISEOForm>
+  	</title>
+  </UISEOPopupWindow>
+  <UISEOToolbarForm>
+  	<title>
+      <seo>Quản lý SEO</seo>
+  	</title>
+  </UISEOToolbarForm>
+  <FloatNumberValidator>
+    <msg>
+      <Invalid-number>Trường {0} chỉ nhận giá trị số kiểu float.</Invalid-number>
+    </msg>
+  </FloatNumberValidator> 
+</bundle>

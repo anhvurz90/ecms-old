@@ -1,0 +1,15 @@
+{docbook}
+<note><para>
+The Newsletter portlet and its services are deprecated. It remains fully supported for eXo customers, however it will not receive any enhancement and will be removed from the product scope in the future.
+</para></note>
+{docbook}
+
+The *Newsletter* portlet is used to help users quickly get the updated newsletter from a site.
+
+This is an example of the *Newsletter* portlet used in eXo Content:
+
+!images/newsletter-portlet.png|align="center" width="150mm" fo:scalefit="1" html:scalefit="0"!
+
+* *Packaging*: This portlet is packaged in the _newsletter.war_ file.
+
+* *The portlet class name*: _org.exoplatform.wcm.webui.newsletter.manager.UINewsletterManagerPortlet_

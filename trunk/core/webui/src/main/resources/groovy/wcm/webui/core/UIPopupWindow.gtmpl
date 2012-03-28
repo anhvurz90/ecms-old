@@ -1,0 +1,52 @@
+<%
+	/**
+	 * Created by The eXo Platform SAS
+	 * Author : Phan Le Thanh Chuong
+	 *          chuong.phan@exoplatform.com, phan.le.thanh.chuong@gmail.com
+	 * Modified: Remove the width and height of the popup
+	 * Oct 29, 2009  
+	 */
+%>
+<%		
+	component = uicomponent.getUIComponent();
+	boolean showCloseButton =	uicomponent.isShowCloseButton()
+	String popupId = uicomponent.getId();
+	String rsId = popupId;
+	if(popupId.indexOf('-')>0){
+		rsId = popupId.substring(0,popupId.lastIndexOf('-'));
+	} 
+	def rcontext = _ctx.getRequestContext();
+	int top = uicomponent.getWindowTop();
+	int left = uicomponent.getWindowLeft();
+	if(top > -1 && left > -1) {
+		rcontext.getJavascriptManager().importJavascript('eXo.webui.WCMUIPopupWindow');
+		rcontext.getJavascriptManager().addJavascript("eXo.webui.WCMUIPopupWindow.init('$popupId', $uicomponent.show, $uicomponent.resizable, true, $uicomponent.showMask, $top, $left);");
+	} else { 
+		rcontext.getJavascriptManager().importJavascript('eXo.webui.UIPopupWindow');
+		rcontext.getJavascriptManager().addJavascript("eXo.webui.UIPopupWindow.init('$popupId', $uicomponent.show, $uicomponent.resizable, true, $uicomponent.showMask);");
+	}
+	String title = rsId;
+	if(component != null)	title = component.getId();
+	
+	int width = uicomponent.getWindowWidth();
+  def String widthStyle = "";
+  if(width > 0) widthStyle = "width:" + width + "px;";
+	
+	String show = "none";
+	if(uicomponent.isShow()) show = "block";
+%>
+
+<div class="UIPopupWindow UIDragObject NormalStyle" exo:minWidth="200" exo:minHeight="200" id="$popupId" style="$widthStyle display: $show;">
+	<div class="OverflowContainer">
+		<%if( true) {%>
+		<a class="CloseButton" title="<%=_ctx.appRes("UIPopupWindow.Close")%>" onclick="<%=uicomponent.event(uicomponent.getCloseEvent())%>"></a>
+		<% } else { %>
+			<div class="PopupTitleIconRight"><span></span></div>
+		<% } %>
+		<span class="PopupTitle"><%=_ctx.appRes(rsId + ".title."+ title)%></span>
+	</div>
+	<div class="UIWindowContent">
+		<div class="PopupContent"><% uicomponent.renderChildren(); %></div>
+	</div>
+	<span class="ResizeButton"></span>
+</div>

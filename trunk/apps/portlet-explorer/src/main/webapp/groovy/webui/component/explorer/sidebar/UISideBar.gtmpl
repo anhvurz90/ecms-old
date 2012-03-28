@@ -1,0 +1,72 @@
+<%
+
+  import org.exoplatform.ecm.webui.component.explorer.UIJCRExplorerPortlet;
+  import org.exoplatform.ecm.webui.component.explorer.sidebar.UISideBar;
+  def managers = uicomponent.getManagers();
+  
+  _ctx.getRequestContext().getJavascriptManager().addOnLoadJavascript("eXo.ecm.ECMUtils.resizeVisibleComponent");
+  _ctx.getRequestContext().getJavascriptManager().addOnLoadJavascript("eXo.ecm.ECMUtils.loadEffectedItemsInSideBar");
+  
+  public String getCSSClassName(String item) {
+    if (uicomponent.getSelectedComp().equals(item)) return "SelectedItem";
+    return "NormalItem";
+  }
+%>
+<div class="UISideBar" id="UISideBar">
+  <div class="UISideBarContainer ClearFix">
+    <div class="UIResizableBlock">
+      <% 
+        String[] arrComp = [uicomponent.getCurrentComp()];
+        uicomponent.renderSideBarChild(arrComp); 
+       %>    
+		<div class="UISelectContent ClearFix">
+			<%
+			for(itemContext in uicomponent.getLstVisibleComp()) {
+	        	def action = itemContext.getUIExtensionName();
+			%>
+				<div class="<%=getCSSClassName(action)%>" onclick="<%=itemContext.event(action)%>" title="<%=_ctx.appRes(uicomponent.getId() + ".label." + action)%>">
+					<div class="ItemIcon DefaultIcon ${action}Icon"><span></span></div>
+				</div>
+			<% } %>
+			
+			<% if (uicomponent.getLstHiddenComp().size() > 0) { %>
+				<!--More button -->
+				<div class="MoreItem">
+					<div class="ItemIcon ActionItem" onclick="eXo.ecm.ECMUtils.toggleVisibility(event);"><span></span></div>
+					
+					<!-- Hidden drop down-->
+					<div style="display: none;" id="ListExtendedComponent" class="ListExtendedItem">
+						<%
+         					for(itemContext in uicomponent.getLstHiddenComp()) {
+         						def action = itemContext.getUIExtensionName();
+       					%>
+								<a title="<%=_ctx.appRes(uicomponent.getId() + ".label." + action)%>" class="IconPopup ${action}Icon" href="<%=itemContext.event(action)%>">&nbsp;</a>
+					<% } %>
+					</div>
+				</div>
+			<% } else { %>
+				<!--More button -->
+				<div class="MoreItem" style="display:none">
+					<div class="ItemIcon ActionItem" onclick="eXo.ecm.ECMUtils.toggleVisibility(event);"><span></span></div>
+					
+					<!-- Hidden drop down-->
+					<div style="display: none;" id="ListExtendedComponent" class="ListExtendedItem"></div>						
+				</div>			
+			<% } %>
+		</div>
+    <% if (uicomponent.getAncestorOfType(UIJCRExplorerPortlet.class).isShowFilterBar()) { %>   
+	    <div class="ResizeTreeExplorer">
+				<div class="ResizeTreeButton" onclick="eXo.ecm.ECMUtils.showHideItemsInSideBar(this)"><span></span></div>
+			</div>
+      <div class="SelectItem" id ="SelectItemArea">
+        <% 
+            String[] arrAllItems = ["UIAllItems", "UIAllItemsByType"];
+            uicomponent.renderSideBarChild(arrAllItems);
+        %>
+      </div>
+      <% } %>
+    </div>
+    
+  </div>
+ 
+</div>

@@ -1,0 +1,1463 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. -->
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+        <!ENTITY % BOOK_ENTITIES SYSTEM "../../../User_Guide.ent">
+        %BOOK_ENTITIES;
+        ]>
+<section id="sect-User_Guide-Content_Presentation_Manager">
+    <!--    This document was created with Syntext Serna Free.    -->
+    <title>Content Presentation</title>
+    <section id="sect-User_Guide-Content_Presentation_Manager-Manage_a_Template">
+        <title>Manage a template</title>
+        <para>
+            When creating a node in &PRODUCT;, you must set its properties. Thus, each node needs to have a form to
+            enter data for their properties (called the
+            <emphasis role="bold">Dialog</emphasis>
+            template), and display the existing values (called the
+            <emphasis role="bold">View</emphasis>
+            template). The template management allows users to view, delete and modify the predefined templates or to
+            add a new template.
+        </para>
+        <mediaobject>
+            <imageobject role="html">
+                <imagedata align="center" fileref="images/manage_templates_form.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+                <imagedata width="150mm" align="center" fileref="images/manage_templates_form.png" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <citetitle>
+        <para xml:id="proc-User_Guide-Manage_a_Template-Add_a_New_Template">
+            <emphasis role="bold">Add a new template</emphasis>
+        </para>
+        </citetitle>
+        <procedure>
+            <step>
+                <para>Click
+                    <emphasis role="bold">Content Presentation --> Manage Templates.</emphasis>
+                </para>
+            </step>
+            <step>
+                <para>
+                    Click the
+                    <emphasis role="bold">Add</emphasis>
+                    button in the
+                    <emphasis role="bold">Manage Templates</emphasis>
+                    form to open the
+                    <emphasis role="bold">Template Form.</emphasis>
+                </para>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata fileref="images/Add_Template_Form.png" format="PNG" align="center" scale="110"/>
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata fileref="images/Add_Template_Form.png" format="PNG" align="center" scalefit="1"
+                                   width="100mm"/>
+                    </imageobject>
+                </mediaobject>
+            </step>
+            <step>
+                <para>
+                    Select the template type from the
+                    <emphasis role="bold">Name</emphasis>
+                    drop-down menu.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Specify a name for the template in the
+                    <emphasis role="bold">Label</emphasis>
+                    field. It is required.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Select the
+                    <emphasis role="bold">is Document Template</emphasis>
+                    checkbox if you want your created template to become a template for a document.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Click
+                    <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/Plus_permission_icon.png" format="PNG" scalefit="1" width="4mm"/>
+                        </imageobject>
+                    </inlinemediaobject>
+                    next to the
+                    <emphasis role="bold">Permission</emphasis>
+                    field to open the
+                    <emphasis role="bold">Select Permission</emphasis>
+                    dialog. It is required.
+                </para>
+                <itemizedlist>
+                    <listitem>
+                <para>
+                    Select the group from the left pane and the membership from the right pane;
+                </para>
+                    </listitem>
+                    <listitem>
+                <para>
+                    Or, you can set permissions for everyone by clicking
+                    <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/plus_icon.png" format="PNG" scalefit="1" width="4mm"/>
+                        </imageobject>
+                    </inlinemediaobject>
+                    next to
+                    <emphasis role="bold">Any Permission.</emphasis>
+                </para>
+                    </listitem>
+                </itemizedlist>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata align="center" fileref="images/img-Select_Permissions_Dialog.png" format="PNG"/>
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata width="100mm" scalefit="1" align="center" fileref="images/img-Select_Permissions_Dialog.png"
+                                   format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </step>
+            <step>
+                <para>
+                    Optionally, select the
+                    <emphasis role="bold">Dialog</emphasis>
+                    tab and enter the value in the
+                    <emphasis role="bold">Dialog Content</emphasis>
+                    field.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Optionally, select the
+                    <emphasis role="bold">View</emphasis>
+                    tab and enter the value in the
+                    <emphasis role="bold">View Content</emphasis>
+                    field.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Optionally, select the
+                    <emphasis role="bold">CSS</emphasis>
+                    tab and enter the value in the
+                    <emphasis role="bold">CSS Content</emphasis>
+                    field.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Click
+                    <emphasis role="bold">Save</emphasis>
+                    to create the template.
+                </para>
+            </step>
+        </procedure>
+        <citetitle>
+        <para xml:id="proc-User_Guide-Manage_a_Template-Edit_a_Template">
+            <emphasis role="bold">Edit a template</emphasis>
+        </para>
+        </citetitle>
+        <procedure>
+            <step>
+                <para>
+                    Click
+                    <emphasis role="bold">Content Presentation --> Manage Templates.</emphasis>
+                </para>
+            </step>
+            <step>
+                <para>
+                    Click
+                    <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/editicon4.png" format="PNG" scalefit="1" width="4mm"/>
+                        </imageobject>
+                    </inlinemediaobject>
+                    in the
+                    <emphasis role="bold">Action</emphasis>
+                    column, corresponding to the template you want to edit.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Make changes on the values of each tab, including:
+                </para>
+                <itemizedlist>
+                    <listitem>
+                        <para>
+                            In the
+                            <emphasis role="bold">Template</emphasis>
+                            tab, you can edit the label of the template.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            In the
+                            <emphasis role="bold">Dialog</emphasis>
+                            tab, you can do the followings:
+                        </para>
+                        <citetitle>
+                        <para>
+                            <emphasis role="bold">Add a dialog</emphasis>
+                        </para>
+                        </citetitle>
+                        <para>
+                            <emphasis role="bold">i.</emphasis>
+                            Input content for this dialog in the
+                            <emphasis role="bold">Content</emphasis>
+                            field.
+                        </para>
+                        <para>
+                            <emphasis role="bold">ii.</emphasis>
+                            Input the name for this dialog that is required.
+                        </para>
+                        <para>
+                            <emphasis role="bold">iii.</emphasis>
+                            Select permissions for a group that can use this dialog that is required.
+                        </para>
+                        <citetitle>
+                        <para>
+                            <emphasis role="bold">Edit an existing dialog</emphasis>
+                        </para>
+                        </citetitle>
+                        <para>
+                            <emphasis role="bold">i.</emphasis>
+                            Click
+                            <inlinemediaobject>
+                                <imageobject>
+                                    <imagedata fileref="images/editicon4.png" format="PNG" scalefit="1" width="4mm"/>
+                                </imageobject>
+                            </inlinemediaobject>
+                            in the dialog row you want to edit.
+                        </para>
+                        <para>
+                            <emphasis role="bold">ii.</emphasis>
+                            Edit the dialog properties.
+                        </para>
+                        <para>
+                            <emphasis role="bold">iii.</emphasis>
+                            Click
+                            <emphasis role="bold">Save</emphasis>
+                            to accept all changes in the
+                            <emphasis role="bold">Dialog</emphasis>
+                            tab.
+                        </para>
+                        <citetitle>
+                        <para>
+                            <emphasis role="bold">Delete an existing dialog</emphasis>
+                        </para>
+                        </citetitle>
+                        <para>
+                            <emphasis role="bold">i.</emphasis>
+                            Click
+                            <inlinemediaobject>
+                                <imageobject>
+                                    <imagedata fileref="images/trashicon.png" format="PNG" scalefit="1" width="4mm"/>
+                                </imageobject>
+                                <textobject>
+                                    <phrase>trash can</phrase>
+                                </textobject>
+                            </inlinemediaobject>
+                            in the dialog row you want to edit.
+                        </para>
+                        <para>
+                            <emphasis role="bold">ii.</emphasis>
+                            Click
+                            <emphasis role="bold">OK</emphasis>
+                            to accept your deletion.
+                        </para>
+                        <note>
+                            <para>
+                                You cannot delete the default dialog. You must create a new one before you can delete
+                                the
+                                current default dialog.
+                            </para>
+                        </note>
+                    </listitem>
+                    <listitem>
+                        <para>In the
+                            <emphasis role="bold">View</emphasis>
+                            tab, you can do the followings:
+                        </para>
+                        <citetitle>
+                        <para>
+                            <emphasis role="bold">Add a view</emphasis>
+                        </para>
+                        </citetitle>
+                        <para>
+                            <emphasis role="bold">i.</emphasis>
+                            Enter content into the
+                            <emphasis role="bold">Content</emphasis>
+                            field.
+                        </para>
+                        <para>
+                            <emphasis role="bold">ii.</emphasis>
+                            Input name for this view that is required.
+                        </para>
+                        <para>
+                            <emphasis role="bold">iii.</emphasis>
+                            Select permissions for a group that can use this view that is required.
+                        </para>
+                        <citetitle>
+                        <para>
+                            <emphasis role="bold">Edit an existing view</emphasis>
+                        </para>
+                        </citetitle>
+                        <para>
+                            <emphasis role="bold">i.</emphasis>
+                            Click
+                            <inlinemediaobject>
+                                <imageobject>
+                                    <imagedata fileref="images/editicon4.png" format="PNG" scalefit="1" width="4mm"/>
+                                </imageobject>
+                            </inlinemediaobject>
+                            in the
+                            <emphasis role="bold">Actions</emphasis>
+                            column, corresponding to the view you want to edit.
+                        </para>
+                        <para>
+                            <emphasis role="bold">ii.</emphasis>
+                            Edit the view properties.
+                        </para>
+                        <para>
+                            <emphasis role="bold">iii.</emphasis>
+                            Click
+                            <emphasis role="bold">Save</emphasis>
+                            to accept all changes in the
+                            <emphasis role="bold">View</emphasis>
+                            tab.
+                        </para>
+                        <note>
+                            <para>
+                                You cannot change the view name.
+                            </para>
+                            <para>
+                                If you click
+                                <emphasis role="bold">is Enable Version</emphasis>
+                                checkbox, this view automatically increments one version after you have clicked <emphasis
+                                    role="bold">Save</emphasis>. It is displayed at <emphasis role="bold">Version</emphasis> column in the
+                                <emphasis role="bold">View</emphasis>
+                                tab.
+                            </para>
+                            <para>
+                                If the dialog has at least two versions, in the
+                                <emphasis role="bold">View</emphasis>
+                                tab, it displays the
+                                <emphasis role="bold">Restore</emphasis>
+                                button. You can use
+                                <emphasis role="bold">Restore</emphasis>
+                                to roll back to the previous View.
+                            </para>
+                        </note>
+                        <citetitle>
+                        <para>
+                            <emphasis role="bold">Delete an existing view</emphasis>
+                        </para>
+                        </citetitle>
+                        <para>
+                            <emphasis role="bold">i.</emphasis>
+                            Click
+                            <inlinemediaobject>
+                                <imageobject>
+                                    <imagedata fileref="images/Delete_icon.png" format="PNG" scalefit="1" width="4mm"/>
+                                </imageobject>
+                            </inlinemediaobject>
+                            in the
+                            <emphasis role="bold">Actions</emphasis>
+                            column, corresponding to the view you want to delete.
+                        </para>
+                        <para>
+                            <emphasis role="bold">ii.</emphasis>
+                            Click
+                            <emphasis role="bold">OK</emphasis>
+                            to accept your deletion.
+                        </para>
+                        <para>
+                            <emphasis role="bold">iii.</emphasis>
+                            Click
+                            <emphasis role="bold">Save</emphasis>
+                            to accept all changes.
+                        </para>
+                    </listitem>
+                </itemizedlist>
+            </step>
+        </procedure>
+        <citetitle>
+        <para xml:id="proc-User_Guide-Manage_a_Template-Delete_a_Template">
+            <emphasis role="bold">Delete a template</emphasis>
+        </para></citetitle>
+        <procedure>
+            <step>
+                <para>
+                    Click
+                    <inlinemediaobject>
+                        <imageobject>
+                            <imagedata width="4mm" scalefit="1" fileref="images/trashicon.png" format="PNG"/>
+                        </imageobject>
+                        <textobject>
+                            <phrase>trash can</phrase>
+                        </textobject>
+                    </inlinemediaobject>
+                    corresponding to the template you want to remove in the
+                    <emphasis role="bold">Manage Templates</emphasis>
+                    page.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Click
+                    <emphasis role="bold">OK</emphasis>
+                    in the confirmation message to accept your deletion.
+                </para>
+            </step>
+        </procedure>
+    </section>
+    <section id="sect-User_Guide-Content_Presentation_Manager-Metadata_Management">
+        <title>Manage metadata</title>
+        <para>
+            Metadata is generally defined as "data about data". Metadata is information which describes, or supplements
+            the central data. In the
+            <emphasis role="bold">Manage Metadata</emphasis>
+            tab, you can manage nodes in the metadata format in the &PRODUCT; system. The metadata may be considered as
+            information used to describe the data. When data are provided to end-users, the metadata allows users to
+            understand about information in more details. All metadata nodes can combine with other nodes to create a
+            new node (add mix).
+        </para>
+        <citetitle>
+        <para xml:id="proc-User_Guide-Metadata_Management-View_Metadata">
+            <emphasis role="bold">View metadata</emphasis>
+        </para>
+        </citetitle>
+        <procedure>
+            <step>
+                <para>
+                    Click
+                    <emphasis role="bold">Content Presentation --> Manage Metadata.</emphasis>
+                </para>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata align="center" fileref="images/manage_metadata.png" format="PNG"/>
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata width="150mm" align="center" fileref="images/manage_metadata.png" format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </step>
+            <step>
+                <para>
+                    Click
+                    <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/Glass_icon.png" format="PNG" scalefit="1" width="4mm"/>
+                        </imageobject>
+                    </inlinemediaobject>
+                    corresponding to the metadata you want to view.
+                </para>
+                <para>
+                    The
+                    <emphasis role="bold">Metadata Information</emphasis>
+                    form will open.
+                </para>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata align="center" fileref="images/img-Metadata_Form.png" format="PNG"/>
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata width="100mm" scalefit="1" align="center" fileref="images/img-Metadata_Form.png" format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </step>
+        </procedure>
+        <citetitle>
+        <para xml:id="proc-User_Guide-Metadata_Management-Edit_Metadata">
+            <emphasis role="bold">Edit metadata</emphasis>
+        </para>
+        </citetitle>
+        <procedure>
+            <step>
+                <para>
+                    Click
+                    <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/editicon4.png" format="PNG" scalefit="1" width="4mm"/>
+                        </imageobject>
+                    </inlinemediaobject>
+                    in the
+                    <emphasis role="bold">Template's Actions</emphasis>
+                    column, corresponding to the metadata you want to edit.
+                </para>
+                <para>
+                    The
+                    <emphasis role="bold">Edit Metadata&apos;s Template</emphasis>
+                    form will open.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Change the required properties of the metadata.
+                </para>
+                <note>
+                    <para>
+                        You cannot edit the metadata name.
+                    </para>
+                </note>
+            </step>
+            <step>
+                <para>
+                    Click <emphasis role="bold">Apply</emphasis> to save all metadata changes.
+                </para>
+            </step>
+        </procedure>
+        <citetitle>
+        <para xml:id="proc-User_Guide-Metadata_Management-Delete_Metadata">
+            <emphasis role="bold">Delete metadata</emphasis>
+        </para>
+        </citetitle>
+        <procedure>
+            <step>
+                <para>
+                    Click
+                    <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/Delete_icon.png" format="PNG" scalefit="1" width="4mm"/>
+                        </imageobject>
+                    </inlinemediaobject>
+                    corresponding to the metadata you want to delete.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Click
+                    <emphasis role="bold">OK</emphasis>
+                    in the confirmation message to accept your deletion.
+                </para>
+            </step>
+        </procedure>
+    </section>
+    <section id="sect-User_Guide-Content_Presentation_Manager-Manage_Views">
+        <title>Manage views</title>
+        <para>
+            The
+            <emphasis role="bold">Manage View</emphasis>
+            function is used to control view ways of a user. It has two tabs:
+            <emphasis role="bold">View</emphasis> and <emphasis role="bold">ECM Templates</emphasis>
+        </para>
+        <para>
+            To open the
+            <emphasis role="bold">Manage View</emphasis>
+            function, click
+            <emphasis role="bold">Content Presentation --> Manage View.</emphasis>
+            The
+            <emphasis role="bold">Manage View</emphasis>
+            form displays.
+        </para>
+        <mediaobject>
+            <imageobject role="html">
+                <imagedata align="center" fileref="images/img-Manage_Views_Form.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+                <imagedata width="150mm" scalefit="1" align="center" fileref="images/img-Manage_Views_Form.png" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <section id="sect-User_Guide-Manage_Views-Views_Tab">
+            <title>Views tab</title>
+            <para>
+                In this tab, you can add, edit, delete, and preview views.
+            </para>
+        <citetitle>
+        <para xml:id="proc-User_Guide-Manage_Views-Add_View">
+            <emphasis role="bold">Add a view</emphasis>
+        </para>
+        </citetitle>
+        <procedure>
+            <step>
+                <para>
+                    Click the
+                    <emphasis role="bold">Add View</emphasis>
+                    button located at the bottom of the
+                    <emphasis role="bold">Manage View</emphasis>
+                    form.
+                </para>
+                <para>
+                    The
+                    <emphasis role="bold">Add View</emphasis>
+                    form will open.
+                </para>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata fileref="images/Add_view.png" format="PNG" align="center" scale="110"/>
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata fileref="images/Add_view.png" format="PNG" align="center" scalefit="1"
+                                   width="100mm"/>
+                    </imageobject>
+                </mediaobject>
+            </step>
+            <step>
+                <para>
+                    Specify the view name in the
+                    <emphasis role="bold">Name</emphasis>
+                    field that must be unique, and only contains standard alphanumeric characters. It is required.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Set permissions for the view by clicking the plus icon. It is required. </para>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata align="center" fileref="images/img-Select_Permissions_Dialog.png" format="PNG"/>
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata width="100mm" scalefit="1" align="center" fileref="images/img-Select_Permissions_Dialog.png"
+                                   format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+                <itemizedlist>
+                    <listitem>
+                        <para>Click <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/plus_icon.png" format="PNG" scalefit="1" width="4mm"/>
+                        </imageobject>
+                    </inlinemediaobject>
+                        next to <emphasis role="bold">Any Permission</emphasis> to assign permission to every one; </para>
+                    </listitem>
+                    <listitem>
+                        <para>Or, select a group from the left pane and the
+                    membership from the right pane.</para>
+                    </listitem>
+                </itemizedlist>
+
+            </step>
+            <step>
+                <para>
+                    Click the
+                    <emphasis role="bold">Templates</emphasis>
+                    field and select a template from the drop-down menu for this view.
+                </para>
+            </step>
+            <step>
+                <para>Click the <emphasis role="bold">Add Tab</emphasis> button to create a functional tab on this view. It is required.</para>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata align="center" fileref="images/tabform.png" format="PNG"/>
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata width="100mm" scalefit="1" align="center" fileref="images/tabform.png"
+                                   format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+
+                        <para><emphasis role="bold">i.</emphasis> Enter the name for the tab in the <emphasis role="bold">Name</emphasis> field. </para>
+
+                        <para><emphasis role="bold">ii.</emphasis> Specify functions to add to the tab.</para>
+
+                        <para><emphasis role="bold">iii.</emphasis> Click <emphasis role="bold">Save</emphasis> to finish creating a tab;</para>
+                        <para>Or, click
+                            <emphasis role="bold">Reset</emphasis>
+                            to clear the
+                            <emphasis role="bold">Tab</emphasis>
+                            form;
+                        </para>
+                        <para>
+                            Or, click
+                            <emphasis role="bold">Back</emphasis>
+                            to return to the
+                            <emphasis role="bold">View Form</emphasis>
+                            tab of the
+                            <emphasis role="bold">Add View</emphasis>
+                            form.
+                        </para>
+                <para>The newly created tab is displayed on the <emphasis role="bold">Tabs</emphasis> field.</para>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata align="center" fileref="images/addviewform.png" format="PNG"/>
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata width="100mm" scalefit="1" align="center" fileref="images/addviewform.png"
+                                   format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </step>
+            <step>
+                <para>
+                    Click
+                    <emphasis role="bold">Save</emphasis>
+                    to apply all settings and close the form.
+                </para>
+            </step>
+        </procedure>
+        <citetitle>
+        <para xml:id="proc-User_Guide-Manage_Views-Edit_a_View">
+            <emphasis role="bold">Edit a View</emphasis>
+        </para>
+        </citetitle>
+        <procedure>
+            <step>
+                <para>
+                    Click
+                    <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/editicon4.png" format="PNG" scalefit="1" width="4mm"/>
+                        </imageobject>
+                    </inlinemediaobject>
+                    in the
+                    <emphasis role="bold">Action</emphasis>
+                    column, corresponding to the view you want to edit.
+                </para>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata align="center" fileref="images/addviewform.png" format="PNG"/>
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata width="100mm" scalefit="1" align="center" fileref="images/addviewform.png"
+                                   format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </step>
+            <step>
+                <para>
+                    Edit the view properties.
+                </para>
+                <note>
+                    <para>
+                        You cannot change the view name.
+                    </para>
+                    <para>
+                        If you select the
+                        <emphasis role="bold">Enable Version</emphasis>
+                        checkbox, this view automatically increases to one version after you click <emphasis role="bold">
+                        Save</emphasis>. It is displayed at the <emphasis role="bold">Base Version</emphasis> column in the
+                        <emphasis role="bold">View</emphasis>
+                        tab.
+                    </para>
+                    <para>
+                        If the dialog has at least two versions, in the
+                        <emphasis role="bold">View</emphasis>
+                        tab, it displays the
+                        <emphasis role="bold">Restore</emphasis>
+                        button. You can use
+                        <emphasis role="bold">Restore</emphasis>
+                        to roll back to the previous View.
+                    </para>
+                </note>
+            </step>
+            <step>
+                <para>
+                    Optionally, click the
+                    <emphasis role="bold">Add Tab</emphasis>
+                    button to open the
+                    <emphasis role="bold">Tab Form</emphasis>
+                    tab that allows you to add more Tabs to the View.
+                </para>
+            </step>
+            <step>
+                <para>Optionally, click an added
+                    <emphasis role="bold">Tab</emphasis>
+                    to add or remove functions on it. Note that you cannot change the tab name.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Click
+                    <emphasis role="bold">Save</emphasis>
+                    to apply all changes in the
+                    <emphasis role="bold">View</emphasis>
+                    tab.
+                </para>
+            </step>
+        </procedure>
+        <citetitle>
+        <para xml:id="proc-User_Guide-Manage_Views-Delete_Views">
+            <emphasis role="bold">Delete a view</emphasis>
+        </para>
+        </citetitle>
+        <procedure>
+            <step>
+                <para>
+                    Click
+                    <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/Delete_icon.png" format="PNG" scalefit="1" width="4mm"/>
+                        </imageobject>
+                    </inlinemediaobject>
+                    corresponding to the view you want to delete in the
+                    <emphasis role="bold">Manage View</emphasis>
+                    page.
+                </para>
+            </step>
+            <step>
+                <para>
+                    Click
+                    <emphasis role="bold">OK</emphasis>
+                    to delete the view in the confirmation message.
+                </para>
+                <note>
+                    <para>
+                        You cannot delete a view which is in use.
+                    </para>
+                </note>
+            </step>
+        </procedure>
+        <citetitle>
+        <para xml:id="proc-User_Guide-Manage_Views-Preview_a_View">
+            <emphasis role="bold">Preview a view</emphasis>
+        </para>
+        </citetitle>
+        <procedure>
+            <step>
+                <para>
+                    Click
+                    <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/Glass_icon.png" format="PNG" scalefit="1" width="4mm"/>
+                        </imageobject>
+                    </inlinemediaobject>
+                    in the
+                    <emphasis role="bold">Action</emphasis>
+                    column of the view you want to preview.
+                </para>
+                <para>
+                    The
+                    <emphasis role="bold">View</emphasis>
+                    form will open.
+                </para>
+                <mediaobject>
+                    <imageobject role="html">
+                        <imagedata align="center" fileref="images/img-View_Form.png" format="PNG"/>
+                    </imageobject>
+                    <imageobject role="fo">
+                        <imagedata width="100mm" scalefit="1" align="center" fileref="images/img-View_Form.png" format="PNG"/>
+                    </imageobject>
+                </mediaobject>
+            </step>
+            <step>
+                <para>
+                    Click
+                    <emphasis role="bold">Close</emphasis>
+                    to exit the
+                    <emphasis role="bold">View</emphasis>
+                    form.
+                </para>
+            </step>
+        </procedure>
+        </section>
+        <section id="sect-User_Guide-Manage_Views-ECM_Templates">
+            <title>ECM Templates tab</title>
+            <citetitle>
+            <para xml:id="proc-User_Guide-ECM_Templates-Add_a_new_ECM_Template">
+                <emphasis role="bold">Add a new ECM Template</emphasis>
+            </para>
+            </citetitle>
+            <procedure>
+                <step>
+                    <para>
+                        Select the
+                        <emphasis role="bold">ECM Templates</emphasis>
+                        tab.
+                    </para>
+                    <mediaobject>
+                        <imageobject role="html">
+                            <imagedata align="center" fileref="images/ECMS-template.png" format="PNG"/>
+                        </imageobject>
+                        <imageobject role="fo">
+                            <imagedata width="150mm" scalefit="1" align="center" fileref="images/ECMS-template.png" format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </step>
+                <step>
+                    <para>
+                        Click the
+                        <emphasis role="bold">Add</emphasis>
+                        button to open the
+                        <emphasis role="bold">Add ECM Template</emphasis>
+                        form.
+                    </para>
+                    <mediaobject>
+                        <imageobject role="html">
+                            <imagedata align="center" fileref="images/addecmtemplate.png" format="PNG"/>
+                        </imageobject>
+                        <imageobject role="fo">
+                            <imagedata width="100mm" scalefit="1" align="center" fileref="images/addecmtemplate.png" format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </step>
+                <step>
+                    <para>
+                        Input the content of the template in the
+                        <emphasis role="bold">Content</emphasis>
+                        field.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Input a name for the template in the
+                        <emphasis role="bold">Name</emphasis>
+                        field.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Select a type for the template in the
+                        <emphasis role="bold">Template Type</emphasis>
+                        field.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Click
+                        <emphasis role="bold">Save</emphasis>
+                        to accept adding a new template.
+                    </para>
+                </step>
+            </procedure>
+            <citetitle>
+            <para xml:id="proc-User_Guide-ECM_Templates-Editing_a_Template">
+                <emphasis role="bold">Edit a template</emphasis>
+            </para>
+            </citetitle>
+            <procedure>
+                <step>
+                    <para>
+                        Click
+                        <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/editicon4.png" format="PNG" scalefit="1" width="4mm"/>
+                            </imageobject>
+                        </inlinemediaobject>
+                        next to the template you want to edit.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Change the current template&apos;s properties.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Click
+                        <emphasis role="bold">Save</emphasis>
+                        to accept all changes.
+                    </para>
+                    <note>
+                        <para>
+                            You cannot edit the template name.
+                        </para>
+                        <para>
+                            If you tick the <emphasis role="bold">Enable Version</emphasis> checkbox, this template will automatically
+                            increase to 1 version after you have clicked <emphasis role="bold">Save</emphasis>. It is
+                            displayed at the <emphasis role="bold">Base Version</emphasis> column in the <emphasis role="bold">ECMS Template</emphasis> tab.
+                        </para>
+                        <para>
+                            If the template has at least two versions, in the <emphasis role="bold">Edit ECM Template</emphasis> form, it
+                            displays the <emphasis role="bold">Restore</emphasis> button that allows restoring the template version.
+                        </para>
+                    </note>
+                </step>
+            </procedure>
+            <citetitle>
+            <para xml:id="proc-User_Guide-ECM_Templates-Delete_a_Template">
+                <emphasis role="bold">Delete a template</emphasis>
+            </para>
+            </citetitle>
+            <procedure>
+                <step>
+                    <para>
+                        Click
+                        <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/Delete_icon.png" format="PNG" scalefit="1" width="4mm"/>
+                            </imageobject>
+                        </inlinemediaobject>
+                        corresponding with the template you want to delete.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Click
+                        <emphasis role="bold">OK</emphasis>
+                        in the confirmation message to accept your deletion.
+                    </para>
+                </step>
+            </procedure>
+        </section>
+    <!-- Remove    <section id="sect-User_Guide-Manage_Views-BC_Templates">
+            <title>BC Templates</title>
+            <citetitle>
+            <para xml:id="proc-User_Guide-BC_Templates-Adding_a_New_Template">
+                <emphasis role="bold">Add a new template</emphasis>
+            </para>
+            </citetitle>
+            <procedure>
+                <step>
+                    <para>
+                        Click
+                        <emphasis role="bold">Add</emphasis>
+                        to open the
+                        <emphasis role="bold">Add BC Template</emphasis>
+                        form.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Input the content for the template in the
+                        <emphasis role="bold">Content</emphasis>
+                        textbox that is required.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Input the name for the template in the
+                        <emphasis role="bold">Name</emphasis>
+                        field which is required.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Select the template type from the drop-down box in the
+                        <emphasis role="bold">Template Type</emphasis>
+                        form.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Click
+                        <emphasis role="bold">Save</emphasis>
+                        to complete adding a new template.
+                    </para>
+                </step>
+                <note>
+                        <para>
+                            The name must be unique.
+                        </para>
+                        <para>
+                            The name must not contain special characters, such as !,@,#,$,%,&amp;,*,(,).
+                        </para>
+                    </note>
+            </procedure>
+            <citetitle>
+            <para xml:id="proc-User_Guide-BC_Templates-Edit_a_BC_Template">
+                <emphasis role="bold">Edit a BC Template</emphasis>
+            </para>
+            </citetitle>
+            <procedure>
+                <step>
+                    <para>
+                        Click
+                        <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/editicon4.png" format="PNG"/>
+                            </imageobject>
+                        </inlinemediaobject>
+                        in the
+                        <emphasis role="bold">Action</emphasis>
+                        column, corresponding to the template you want to edit.
+                    </para>
+                    <mediaobject>
+                        <imageobject role="html">
+                            <imagedata align="center" fileref="images/editbctemplateform.png" format="PNG"/>
+                        </imageobject>
+                        <imageobject role="fo">
+                            <imagedata width="150mm" align="center" fileref="images/editbctemplateform.png"
+                                       format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </step>
+                <step>
+                    <para>
+                        Change the current template&apos;s properties.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Click
+                        <emphasis role="bold">Save</emphasis>
+                        to accept all changes.
+                    </para>
+                    <note>
+                        <para>
+                            You cannot edit the template name.
+                        </para>
+                        <para>
+                            You cannot edit the template type.
+                        </para>
+                        <para>
+                            If you tick the &apos;Enable Version&apos; checkbox, this template will automatically
+                            increase by 1 version after you have clicked <emphasis role="bold">Save</emphasis>. It is
+                            displayed at the &apos;Base Version&apos; column in
+                            <emphasis role="bold">BC Templates</emphasis>
+                            tab.
+                        </para>
+                        <para>
+                            If the template has at least 2 versions, in the &apos;Edit BC Template&apos; form, it
+                            displays the
+                            <emphasis role="bold">Restore</emphasis>
+                            button that allows restoring the template version.
+                        </para>
+                    </note>
+                </step>
+            </procedure>
+            <citetitle>
+            <para xml:id="proc-User_Guide-BC_Templates-Delete_a_Template">
+                <emphasis role="bold">Delete a BC template</emphasis>
+            </para>
+            </citetitle>
+            <procedure>
+                <step>
+                    <para>
+                        Click
+                        <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/Delete_icon.png" format="PNG"/>
+                            </imageobject>
+                        </inlinemediaobject>
+                        corresponding to the BC template you want to delete.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Click
+                        <emphasis role="bold">OK</emphasis>
+                        to accept your deletion in the confirmation message.
+                    </para>
+                </step>
+            </procedure>
+        </section> -->
+    </section>
+    <section id="sect-User_Guide-Content_Presentation_Manager-Drives_Management">
+        <title>Manage drives</title>
+        <para>
+            The function supports you to manage drives in the
+            <emphasis role="bold">Sites Explorer.</emphasis>
+            It allows adding, editing and deleting drives.
+        </para>
+        <para>
+            Go to
+            <emphasis role="bold">Content Presentation --> Manage Drives.</emphasis>
+        </para>
+        <mediaobject>
+            <imageobject role="html">
+                <imagedata align="center" fileref="images/manage_drives.png" format="PNG"/>
+            </imageobject>
+            <imageobject role="fo">
+                <imagedata width="150mm" align="center" fileref="images/manage_drives.png" format="PNG"/>
+            </imageobject>
+        </mediaobject>
+        <section id="sect-User_Guide-Drives_Management-Add_a_new_drive">
+            <title>Add a new drive</title>
+            <procedure>
+                <step>
+                    <para>
+                        Click the
+                        <emphasis role="bold">Add Drive</emphasis>
+                        button in the
+                        <emphasis role="bold">Manage Drives</emphasis>
+                        page to open the
+                        <emphasis role="bold">Add Drive</emphasis>
+                        form.
+                    </para>
+                    <mediaobject>
+                        <imageobject role="html">
+                            <imagedata align="center" fileref="images/add_drive.png" format="PNG"/>
+                        </imageobject>
+                        <imageobject role="fo">
+                            <imagedata width="100mm" scalefit="1" align="center" fileref="images/add_drive.png" format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </step>
+                <step>
+                    <para>
+                        Input a name for the new drive in the
+                        <emphasis role="bold">Name</emphasis>
+                        field that is required.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Select a workspace for the drive from the drop-down menu by clicking the <emphasis role="bold">Workspace</emphasis> entry.
+                    </para>
+                    <mediaobject>
+                        <imageobject role="html">
+                            <imagedata align="center" fileref="images/workspaces.png" format="PNG"/>
+                        </imageobject>
+                        <imageobject role="fo">
+                            <imagedata width="63mm" align="center" fileref="images/workspaces.png" format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </step>
+                <step>
+                    <para>
+                        Select the home path for the drive by clicking
+                        <inlinemediaobject>
+                            <imageobject>
+                                <imagedata width="4mm" scalefit="1" fileref="images/deplussy.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase>plus</phrase>
+                            </textobject>
+                        </inlinemediaobject>
+                        beside the
+                        <emphasis role="bold">Home Path</emphasis>
+                        entry.
+                    </para>
+                    <mediaobject>
+                        <imageobject role="html">
+                            <imagedata align="center" fileref="images/home_path.png" format="PNG"/>
+                        </imageobject>
+                        <imageobject role="fo">
+                            <imagedata width="100mm" scalefit="1" align="center" fileref="images/home_path.png" format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </step>
+                <step>
+                    <para>
+                        Browse an icon for the workspace by clicking
+                        <inlinemediaobject>
+                            <imageobject>
+                                <imagedata width="4mm" scalefit="1" fileref="images/addplusicon.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase>plus</phrase>
+                            </textobject>
+                        </inlinemediaobject>
+                        beside the
+                        <emphasis role="bold">Workspace Icon</emphasis>
+                        entry.
+                    </para>
+
+                    <para>
+                        Select an icon by clicking
+                        <inlinemediaobject>
+                            <imageobject>
+                                <imagedata width="4mm" scalefit="1" fileref="images/greentick.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase>green tick</phrase>
+                            </textobject>
+                        </inlinemediaobject>
+                        corresponding to your desired icon file.
+                    </para>
+                    <mediaobject>
+                        <imageobject role="html">
+                            <imagedata align="center" fileref="images/addiconfileform.png" format="PNG"/>
+                        </imageobject>
+                        <imageobject role="fo">
+                            <imagedata width="150mm" align="center" fileref="images/addiconfileform.png" format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </step>
+                <step>
+                    <para>
+                        Select permissions for groups that have access rights to this drive by clicking
+                        <inlinemediaobject>
+                            <imageobject>
+                                <imagedata width="4mm" scalefit="1" fileref="images/pluspermissionbutton.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase>plus</phrase>
+                            </textobject>
+                        </inlinemediaobject>
+                        beside the
+                        <emphasis role="bold">Permissions</emphasis>
+                        entry.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Select or deselect the various checkboxes to hide or show the drive elements respectively.
+                    </para>
+                    <variablelist>
+                        <varlistentry>
+                            <term>Show Referenced Document</term>
+                            <listitem>
+                                <para>
+                                    Allow viewing preference documents.
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Show Non-document Nodes</term>
+                            <listitem>
+                                <para>
+                                    Allow viewing non-documents.
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Show Sidebar</term>
+                            <listitem>
+                                <para>
+                                    Allow showing the sidebar.
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Show Hidden Node</term>
+                            <listitem>
+                                <para>
+                                    Allow showing the hidden nodes.
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </step>
+                <step>
+                    <para>
+                        Select the document type that will be created in this drive.
+                    </para>
+                 <!--   <variablelist>
+                        <varlistentry>
+                            <term>exo:jsFolder</term>
+                            <listitem>
+                                <para>
+
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Unstructured folder</term>
+                            <listitem>
+                                <para>
+                                    Only
+                                    <emphasis role="bold">nt:unstructured</emphasis>
+                                    folders can be created in this drive.
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>exo:webFolder</term>
+                            <listitem>
+                                <para>
+
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>exo:linkFolder</term>
+                            <listitem>
+                                <para>
+
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>exo:cssFolder</term>
+                            <listitem>
+                                <para>
+
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Folder</term>
+                            <listitem>
+                                <para>
+                                    Only
+                                    <emphasis role="bold">nt:folder</emphasis>
+                                    folders can be created in this drive.
+                                </para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>  -->
+                </step>
+                <step>
+                    <para>
+                        Select the
+                        <emphasis role="bold">Apply Views</emphasis>
+                        tab and select the view types you want to be available in the drive.
+                    </para>
+                    <mediaobject>
+                        <imageobject role="html">
+                            <imagedata align="center" fileref="images/applyviewstab.png" format="PNG"/>
+                        </imageobject>
+                        <imageobject role="fo">
+                            <imagedata width="150mm" align="center" fileref="images/applyviewstab.png" format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </step>
+                <step>
+                    <para>
+                        Click
+                        <emphasis role="bold">Save</emphasis>
+                        to complete creating the new drive, or
+                        <emphasis role="bold">Refresh</emphasis>
+                        to clear the form.
+                    </para>
+                </step>
+            </procedure>
+        </section>
+        <section id="sect-User_Guide-Drives_Management-Edit_drive">
+            <title>Edit a drive</title>
+            <procedure>
+                <step>
+                    <para>
+                        Click
+                        <inlinemediaobject>
+                            <imageobject>
+                                <imagedata width="4mm" scalefit="1" fileref="images/editicon4.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase>pencil</phrase>
+                            </textobject>
+                        </inlinemediaobject>
+                        corresponding to the drive you want to edit. The
+                        <emphasis role="bold">Edit Drive</emphasis>
+                        form will appear.
+                    </para>
+                    <mediaobject>
+                        <imageobject role="html">
+                            <imagedata align="center" fileref="images/editdriveform.png" format="PNG"/>
+                        </imageobject>
+                        <imageobject role="fo">
+                            <imagedata width="100mm" scalefit="1" align="center" fileref="images/editdriveform.png" format="PNG"/>
+                        </imageobject>
+                    </mediaobject>
+                </step>
+                <step>
+                    <para>
+                        Edit the properties as required.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Click
+                        <emphasis role="bold">Save</emphasis>
+                        to commit the changes.
+                    </para>
+                </step>
+            </procedure>
+            <note>
+                <para>
+                    The drive name cannot be edited in this form.
+                </para>
+            </note>
+        </section>
+        <section id="sect-User_Guide-Drives_Management-Delete_drive">
+            <title>Delete a drive</title>
+            <procedure>
+                <step>
+                    <para>
+                        Click
+                        <inlinemediaobject>
+                            <imageobject>
+                                <imagedata width="4mm" scalefit="1" fileref="images/trashicon.png" format="PNG"/>
+                            </imageobject>
+                            <textobject>
+                                <phrase>trash can</phrase>
+                            </textobject>
+                        </inlinemediaobject>
+                        that corresponds to the drive you want to delete.
+                    </para>
+                </step>
+                <step>
+                    <para>
+                        Click
+                        <emphasis role="bold">OK</emphasis>
+                        to delete the drive in the confirmation message.
+                    </para>
+                </step>
+            </procedure>
+        </section>
+    </section>
+</section>

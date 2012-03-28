@@ -1,0 +1,49 @@
+<div id="$uicomponent.id" class="$uicomponent.id">
+	<div class="SelectTemplateThumbnailView">
+		<div class="SelectTemplateTitle" style="height:25px">
+			<div style="float:left"><%=_ctx.appRes("UISelectDocumentForm.label.selectTemplate")%></div>
+			<div title='<%=_ctx.appRes("UISelectDocumentForm.label.Cancel")%>' class="CancelNewDoc" onclick="<%=uicomponent.event('Cancel');%>"></div>
+			<div title='<%=_ctx.appRes("UISelectDocumentForm.label.ThumbnailView")%>' class="SelectedThumbnailViewIcon" onclick="<%=uicomponent.event('ChangeView', 'ThumbnailView');%>"></div>
+		  <div title='<%=_ctx.appRes("UISelectDocumentForm.label.ListView")%>' class="ChangeListViewIcon" onclick="<%=uicomponent.event('ChangeView', 'ListView');%>"></div>
+		</div>
+		<hr>
+		<div class="SelectTemplateArea">	
+			<% 
+				def templates = uicomponent.getChildrenList();
+				if (templates != null) {
+				  for (int i = 0; i < templates.size(); i++) {
+					  def label = templates.get(i);
+					  def contentType = uicomponent.getContentType(label);
+					  def actionLink = uicomponent.event("SelectTemplate", contentType);
+					  def cssClass = uicomponent.getTemplateIconStylesheet(contentType);
+			%>
+			
+			<!-- 1 template-->
+			<div class="TemplateBox" onclick="$actionLink">
+				<div style="height: auto; width: auto; border: none;">
+					<div>
+						<div class="TemplateIconContainer">
+							<div title="$label" class="TemplateIcon default70x80Icon $cssClass"></div>
+						</div>
+					</div>
+					<div class="TemplateLabel" >
+						<a href="javascript:void(0);">$label</a>
+					</div>
+				</div>
+			</div>
+			
+			<%
+				  }
+				}
+			%>
+		</div>
+	</div>
+	<% 
+	  int availablePage = uicomponent.getContentPageIterator().getAvailablePage();
+	  if (availablePage > 1) { 
+	%>	
+	<div class="PageAvailable" pageAvailable='$availablePage'>
+		<%_ctx.renderUIComponent(uicomponent.getContentPageIterator())%>
+	</div>
+  <% } %>
+</div>

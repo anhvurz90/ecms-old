@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle>
+  <UISEOForm>
+    <label>
+      <title>Titre: </title>
+      <description>Description: </description>
+      <keywords>Mots clés: </keywords>
+      <language>Langue: </language>
+      <robots>Robots: </robots>
+      <sitemap>Sitemap: </sitemap>
+      <sitemapvisible>Visible dans le sitemap</sitemapvisible>
+      <priority>Priorité: </priority>
+      <frequency>Fréquence: </frequency>  
+      <option>
+        <Always>Toujours</Always>
+        <Hourly>Toutes les heures</Hourly>
+        <Daily>Journalier</Daily>
+        <Weekly>Hebdomadaire</Weekly>
+        <Monthly>Mensuel</Monthly>
+        <Yearly>Annuel</Yearly>
+        <Never>Jamais</Never>
+      </option>    
+      <option>
+        <en>English</en>
+        <fr>French</fr>
+        <ru>Russian</ru>
+        <vi>Vietnamese</vi>
+        <nl>Dutch</nl>
+        <de>German</de>
+        <uk>Ukrainian</uk>
+        <ar>Arabic</ar>
+      </option>
+    </label>
+    <tip>
+        <priority>Valeurs valides de 0.0 à 1.0.</priority>
+    </tip>  
+    <action>
+      <Save>Sauvegarder</Save>
+      <Cancel>Annuler</Cancel>
+    </action>
+    <msg>
+      <repository-exception>Une erreure inattendue est apparue! Sauvegarde impossible des métadonnées.</repository-exception>   
+    </msg>
+  </UISEOForm>
+  <UISEOPopupWindow>
+    <title>
+      <UISEOForm>SEO Management</UISEOForm>
+    </title>
+  </UISEOPopupWindow>
+  <UISEOToolbarForm>
+    <title>
+      <seo>SEO Management</seo>
+    </title>
+  </UISEOToolbarForm>
+  <FloatNumberValidator>
+    <msg>
+      <Invalid-number>Le champ '{0}' est un nombre invalide (float).</Invalid-number>
+    </msg>
+  </FloatNumberValidator> 
+</bundle>

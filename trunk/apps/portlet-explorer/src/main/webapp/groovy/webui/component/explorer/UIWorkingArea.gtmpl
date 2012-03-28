@@ -1,0 +1,64 @@
+<%
+	/**
+	 * Created by The eXo Platform SARL
+	 * Author : Tran The Trong
+	 *          trongtt@gmail.com
+	 * July 25, 2006
+	 * version: $Id$	 
+	 */
+%>
+<%
+  import org.exoplatform.ecm.webui.component.explorer.sidebar.UISideBar ;
+  import org.exoplatform.ecm.webui.component.explorer.sidebar.UITreeExplorer;
+  import org.exoplatform.ecm.webui.component.explorer.UIDocumentWorkspace ;
+  import org.exoplatform.ecm.webui.component.explorer.control.UIActionBar;
+  import org.exoplatform.ecm.webui.component.explorer.UIDrivesArea ;
+  import org.exoplatform.webui.core.UIRightClickPopupMenu ;
+  import org.exoplatform.ecm.jcr.model.Preference;
+  import org.exoplatform.ecm.webui.component.explorer.UIJCRExplorer;
+  
+  def rcontext = _ctx.getRequestContext() ;
+  UITreeExplorer uiTreeExplorer = uicomponent.findFirstComponentOfType(UITreeExplorer.class);
+  def focusNode = uiTreeExplorer.getEncodeCurrentPath();
+  def expandNode = uiTreeExplorer.getEncodeExpandPath();
+  def isExpand = uiTreeExplorer.getIsExpand();
+  def uiExplorer = uicomponent.getAncestorOfType(UIJCRExplorer.class);
+  def pref = uiExplorer.getPreference();
+  def enableDragAndDrop = pref.isEnableDragAndDrop();
+  
+  String componentId = uicomponent.getId();
+  rcontext.getJavascriptManager().addJavascript("eXo.ecm.UIListView.initDragDropForTreeEvent('$componentId', '$enableDragAndDrop');");
+  rcontext.getJavascriptManager().addOnLoadJavascript('eXo.ecm.ECMUtils.loadEffectedItemsInSideBar');
+  if(!isExpand && focusNode != null)
+  	rcontext.getJavascriptManager().addJavascript("eXo.ecm.ECMUtils.loadEffectedSideBar('$focusNode');") ;
+  else if(isExpand && expandNode != null)
+  	rcontext.getJavascriptManager().addJavascript("eXo.ecm.ECMUtils.loadEffectedSideBar('$expandNode');") ;  
+%>
+
+<div class="UIWorkingArea ClearFix" id="UIWorkingArea">
+  <%
+	  uicomponent.renderChild(UIRightClickPopupMenu.class) ;
+
+	  if( uicomponent.isShowSideBar() ) {
+	    println "<div class=\"LeftCotainer\" id=\"LeftContainer\">" ;
+	  	uicomponent.renderChild(UISideBar.class) ; 
+	  	println "</div>" ;
+	  }
+	%>
+	
+	<% if( uicomponent.isShowSideBar() ) {%>
+		<div class="ResizeSideBar">
+			<div class="ResizeButton" onclick="eXo.ecm.ECMUtils.showHideSideBar(this)"><span></span></div>
+		</div>
+	<% } %>
+	
+  <div class="RightContainer">
+		<% 
+		  uicomponent.renderChild(UIActionBar.class) ;
+		  uicomponent.renderChild(UIDocumentWorkspace.class) ;
+		  uicomponent.renderChild(UIDrivesArea.class);
+		%>
+		
+	</div>
+	
+</div>

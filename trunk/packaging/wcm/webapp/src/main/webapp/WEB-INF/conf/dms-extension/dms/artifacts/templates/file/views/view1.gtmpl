@@ -1,0 +1,103 @@
+<%
+  import java.util.List;
+  import java.util.ArrayList;
+  import javax.jcr.Node;
+  import javax.jcr.NodeIterator;
+  import org.exoplatform.webui.core.UIPopupWindow;
+  import org.exoplatform.web.application.Parameter;
+  import org.exoplatform.ecm.webui.utils.Utils; 
+  import org.exoplatform.services.wcm.core.NodeLocation;
+  import org.exoplatform.ecm.utils.text.Text;
+  import org.exoplatform.services.jcr.RepositoryService;
+  import org.apache.commons.lang.StringEscapeUtils;
+  
+  public Node getFileLangNode(Node currentNode) throws Exception {
+    if(currentNode.isNodeType("nt:unstructured")) {
+      if(currentNode.getNodes().getSize() > 0) {
+        NodeIterator nodeIter = currentNode.getNodes() ;
+        while(nodeIter.hasNext()) {
+          Node ntFile = nodeIter.nextNode() ;
+          if(ntFile.getPrimaryNodeType().getName().equals("nt:file")) {
+            return ntFile ;
+          }
+        }
+        return currentNode ;
+      }
+    }
+    return currentNode ;
+  }
+  
+  def rcontext = _ctx.getRequestContext() ; 
+  rcontext.getJavascriptManager().importJavascript('eXo.ecm.ECMUtils','/ecm-wcm-extension/javascript/');
+  rcontext.getJavascriptManager().importJavascript('eXo.ecm.DMSBrowser','/ecm-wcm-extension/javascript/');
+  rcontext.getJavascriptManager().addJavascript("eXo.ecm.DMSBrowser.managerResize();");
+  RepositoryService rService = uicomponent.getApplicationComponent(RepositoryService.class);
+  String repository = rService.getCurrentRepository().getConfiguration().getName();  
+  
+  
+  UIPopupWindow uiPopupWindow = uicomponent.getAncestorOfType(UIPopupWindow.class);
+  def resizeBlock = "class=\"UIResizableBlock\"";
+  if(uiPopupWindow != null) resizeBlock = ""; 
+  
+  def currentNode = getFileLangNode(uicomponent.getNode()) ;
+  currentNode = org.exoplatform.wcm.webui.Utils.getRealNode(currentNode);
+  def currentNodePath = org.exoplatform.wcm.webui.Utils.getRealNodePath(currentNode);
+  def contentNode = currentNode.getNode("jcr:content") ;
+  def title = StringEscapeUtils.escapeHtml(Text.unescapeIllegalJcrChars(currentNode.name));
+  def mimeType = contentNode.getProperty("jcr:mimeType").getString() ;
+  List<String> unsupportMimeTypeText = new ArrayList<String>();
+  unsupportMimeTypeText.add("text/rtf");
+  String serverUrl = uicomponent.getWebDAVServerPrefix();
+  String portalName = uicomponent.getPortalName() ;
+  String restContextName = org.exoplatform.ecm.webui.utils.Utils.getRestContextName(portalName);
+  
+  public String formatNodeName(String text) {
+    return text.replaceAll("'", "\\\\'") ;
+  }
+%>
+<div $resizeBlock>
+  <style>
+    <% _ctx.include(uicomponent.getTemplateSkin("nt:file", "Stylesheet")); %>
+  </style>
+  <div class="FileContent">
+    <div class="NavigationContainer"> 
+      <div class="TopNavContent ClearFix">
+        <div class="TopTitle" title="<%=title %>">
+          <%=title %>
+        </div>
+        <%
+          StringBuilder sb = new StringBuilder();
+          String ndPath = currentNode.getPath();
+          if (ndPath.startsWith("/")) {
+            ndPath = ndPath.substring(1);
+          }
+          
+          def encodedPath = URLEncoder.encode(ndPath, "utf-8");
+          encodedPath = encodedPath.replaceAll ("%2F", "/"); //we won't encode the slash characters in the path
+          
+          sb.append(serverUrl).append("/").append(restContextName).append("/contents/download/");
+          sb.append(currentNode.getSession().getWorkspace().getName()).append("/").append(encodedPath);
+          def downloadLink = sb.toString();
+        %>
+        <div style="text-align:right;margin-top:1px" class="ActionButton LightBlueStyle">
+          <a href="$downloadLink"><%=_ctx.appRes("File.view.label.download")%></a>
+        </div>        
+      </div>
+      <div class="Content">
+        <%
+          def fileComponent = uicomponent.getUIComponent(mimeType);
+          if(fileComponent != null) {
+          uicomponent.renderUIComponent(fileComponent);
+          } else {
+        %>
+        <div style="text-align:center; font-style:italic">
+          <%=_ctx.appRes("File.view.label.not-viewable")%>
+        </div>
+        <%}%>
+        
+      </div>
+    </div>
+    <div><% _ctx.include(uicomponent.getViewTemplate("mix:votable", "view1")); %></div>
+    <div><% _ctx.include(uicomponent.getViewTemplate("exo:comments", "view1")); %></div>
+  </div>
+</div>

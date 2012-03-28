@@ -1,0 +1,84 @@
+<%
+/**
+ * Created by The eXo Platform SARL
+ * Author : Dang Van Minh
+ *          minh.dang@exoplatform.com
+ * Nov 8, 2006
+ * 6:15:56 PM 
+ */
+%>
+<% import org.exoplatform.webui.core.UIPageIterator; %>
+<%
+   UIPageIterator uiIterator = uicomponent.getChild(UIPageIterator.class) ;
+   int totalPages = uiIterator.getAvailablePage();
+   StringBuilder sB;
+%>
+<div class="UIActionList" id="$uicomponent.id">
+  <table class="UIGrid">
+	  <thead>
+	    <tr>
+	      <th><%=_ctx.appRes("UIActionList.header.name")%></th>
+		    <th><%=_ctx.appRes("UIActionList.header.triggeredaction")%></th>
+ 		    <th><%=_ctx.appRes("UIActionList.header.lifecycle")%></th>
+ 		    <th><%=_ctx.appRes("UIActionList.header.action")%></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+      <%
+        def rowClass = "OddRow" ;
+		    boolean even = true ;
+		    if(uicomponent.hasActions()) {
+			    for(action in uicomponent.getListActions()) {
+			      if(even) rowClass = "EvenRow" ;  
+			      else rowClass =  "OddRow" ; 
+			      even = !even ;
+      %>
+		      <tr class="$rowClass">
+		        <td>
+		          <div class="Text">
+		          	<%if(action.hasProperty("exo:name")){%>
+		          		<%=action.getProperty("exo:name").getString()%>
+		          	<%}%>
+		          </div>
+		        </td>
+		        <td>
+	            <div class="Text">[<%=action.getPrimaryNodeType().getName()%>]</div>
+	          </td>
+		        <td>
+		          <div class="Text">
+		          <%if(action.hasProperty("exo:lifecyclePhase")){
+		            sB = new StringBuilder();
+		            def values = action.getProperty("exo:lifecyclePhase").getValues();          
+		            for(value in values) {
+		              sB.append(_ctx.appRes(value.getString())).append(", ");
+		            } 
+		            if (sB.length() > 0) {
+		              %>
+		              <%= sB.deleteCharAt(sB.length()-2)%>        
+		            <% } 
+		            }%>
+		          </div>
+		        </td>		       
+		        <td>
+		        	<div class="ActionContainer">
+			        <%
+			          for(act in uicomponent.getActions()) { 
+			        %>
+	            	<img class="${act}16x16Icon" src="/eXoResources/skin/sharedImages/Blank.gif" alt="<%=_ctx.appRes("UIActionList.action." + act)%>" onclick="<%=uicomponent.event(act, action.getName())%>"  title="<%=_ctx.appRes("UIActionList.action." + act)%>"/>
+			        <%} %>
+	           	</div>
+		        </td>
+		      </tr>
+	    <%
+	        }
+	      }
+	    %>
+    </tbody>
+  </table>
+  <% if(totalPages > 1){ %>
+  <% uicomponent.renderChild(UIPageIterator.class) %>
+  <% } %>
+  <div class="UIAction"> 
+		<a onclick="<%=uicomponent.event("Close")%>" class="ActionButton LightBlueStyle" href="javascript:void(0);"><%=_ctx.appRes("UIActionList.action.Close")%></a>
+	</div>
+</div>

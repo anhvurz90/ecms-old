@@ -1,0 +1,44 @@
+<%
+  import org.exoplatform.ecm.webui.utils.Utils ;
+  import org.exoplatform.ecm.webui.component.explorer.sidebar.UISavedSearches.QueryData;
+  import org.exoplatform.ecm.webui.component.explorer.sidebar.UISavedSearches.NodeData;
+  
+  def rcontext = _ctx.getRequestContext() ;
+	def queryListData = uicomponent.queryList();
+%>
+<div class="SideBarContent">
+   <div class="BarContent">
+  	<div class="BarContentL">
+  		<div class="BarContentR">
+  			<div class="BarContentM ClearFix">
+			    <div class="Title"><%=_ctx.appRes("UISavedSearches.title.savedSearches")%></div>
+			  	<div class="AdvancedSearch" onclick="<%=uicomponent.event("AdvanceSearch")%>" title="<%=_ctx.appRes("UIActionBar.title.AdvanceSearch")%>"><span></span></div>
+			  	
+			  </div>
+			</div>
+		</div>
+	</div>
+  <div class="SideContent">
+    <%if(queryListData.size() == 0) { %>
+        <div><span>No query found</span></div>
+    <%} else {
+        for(object in queryListData) {
+          String selectedCss;
+          if(object instanceof QueryData) {
+            def storedQueryPath = object.getStoredQueryPath() ;
+	          def queryName =  storedQueryPath.substring(storedQueryPath.lastIndexOf("/") + 1) ;
+	          selectedCss = (storedQueryPath.equals(uicomponent.getQueryPath()) ? "SelectedNode" : "");
+			  		println("<a class=\"$selectedCss\" href=\"" + uicomponent.event("Execute", Utils.formatNodeName(storedQueryPath)) + "\" title=\"" + _ctx.appRes("UISavedQuery.tooltip.Execute") + "\">");			  			  
+	          println("  <div class=\"ArrowSidContent TextSiderContent\">" + queryName +"</div>");			  			  
+	          println("</a>");
+          } else if(object instanceof NodeData) {			
+						selectedCss = object.getPath().equals(uicomponent.getQueryPath()) ? "SelectedNode" : "";	          
+            println("<a class=\"$selectedCss\" href=\"" + uicomponent.event("Execute", object.getPath()) + "\" title=\"" + _ctx.appRes("UISavedQuery.tooltip.Execute") + "\">");						
+			  		println("<div class=\"ArrowSidContent TextSiderContent\">" +object.getName()+ "</div>");			  
+	          println("</a>"); 
+          }
+        }
+      }
+    %>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<%
+/**
+ * Created by The eXo Platform SARL
+ * Author : Dang Van Minh
+ *          minh.dang@exoplatform.com
+ * Dec 29, 2006
+ * 3:28:26 PM 
+ */
+%>
+<%
+  import org.exoplatform.ecm.webui.utils.Utils; 
+  def settingLockList = uicomponent.getGroupsOrUsersForLock();
+  int totalItems = uicomponent.getAllGroupsOrUsersForLock().size();
+  if(settingLockList == null) return;
+  int totalPages = uicomponent.getUIPageIterator().getAvailablePage();
+%>
+<div class="UIQueriesList" id="$uicomponent.id">
+  <% if (totalItems > 5) {%>
+  <div style="margin:1px 0px 5px 0px;">
+    <%
+      uicomponent.getUIPageIterator().setUseMaxSizeSetting(true);
+      _ctx.renderUIComponent(uicomponent.getUIPageIterator());
+    %>
+  </div>
+  <%}%>
+  <table class="UIGrid">
+    <thead>
+      <tr>
+  	    <th><%=_ctx.appRes("UILockHolderList.header.name")%></th>  	    
+  	    <th style="width:55px;"><%=_ctx.appRes("UILockHolderList.header.action")%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        if (settingLockList.size() > 0) {
+        def rowClass = null ;
+  	    boolean even = true ;
+  	    for (settingLock in settingLockList) {
+  	      if(even) rowClass = "EvenRow" ;  
+  	      else rowClass =  "OddRow" ; 
+  	      even = !even ;
+      %>
+          <tr class="$rowClass">            
+            <td><div class="Text">$settingLock</div></td>
+	          	<td style="width:55px;">
+		          	<div class="ActionContainer">
+				          <img onclick="<%=uicomponent.event("DeleteLock", settingLock)%>" title="<%=_ctx.appRes("UILockHolderList.tooltip.DeleteLock")%>" alt="<%=_ctx.appRes("UILockHolderList.tooltip.DeleteLock")%>" src="/eXoResources/skin/sharedImages/Blank.gif" class="Delete16x16Icon" />
+			          </div>
+	          	</td>	                    
+          </tr>
+      <%}
+      } %>  
+    </tbody>
+  </table>
+  <% if (totalItems > 5) {%>
+  <div style="margin:1px 0px 5px 0px;">
+    <%
+      uicomponent.getUIPageIterator().setUseMaxSizeSetting(false);
+      _ctx.renderUIComponent(uicomponent.getUIPageIterator());
+    %>
+  </div>
+  <%}%>
+	<div class="UIAction">
+	  <% for(action in uicomponent.getActions()) { %>
+		  <a onclick="<%=uicomponent.event(action)%>" class="ActionButton LightBlueStyle" href="javascript:void(0);"><%=_ctx.appRes("UILockHolderList.action." + action)%></a>
+		<% } %>
+	</div>
+</div>

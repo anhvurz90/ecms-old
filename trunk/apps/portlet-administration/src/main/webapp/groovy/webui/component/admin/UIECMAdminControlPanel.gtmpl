@@ -1,0 +1,67 @@
+<%
+  import java.util.ArrayList;
+  def managers = uicomponent.getManagers();
+  def typeManage = new ArrayList();
+  String catego = null;
+  def managersGroup = new ArrayList();
+  def lGroups = null;
+  if (managers == null) {
+	return;
+  }
+  for (manager in managers) {
+	if (catego == null || !catego.equals(manager.getUIExtensionCategory())) {
+		// new category
+		catego = manager.getUIExtensionCategory();
+		typeManage.add(catego);
+		lGroups = new ArrayList();
+		managersGroup.add(lGroups);
+	}
+	lGroups.add(manager);
+  }
+%>
+<div class="UIECMAdminControlPanel">
+	<div class="UIVerticalSlideTabs">
+    <%
+     int i = 0;
+     for(type in typeManage) {
+       def currentBlockStyleClass = null;
+       def currentBlockContentStyleClass = null;
+       if (!uicomponent.isSameCategoryWithCurrentRenderedManager(type, typeManage, managersGroup)) {
+         currentBlockStyleClass = "class=\"NormalTab\"";
+         currentBlockContentStyleClass = "style=\"display:none; height: 0px;\"";
+       } else {
+         currentBlockStyleClass = "class=\"SelectedTab\"";
+       }
+    %>
+	    <div class="UIVTab VTabStyle3 ClearFix">
+			<div <%=currentBlockStyleClass%>>
+				<div class="TabRepeat ClearFix" onclick="eXo.webui.UIVerticalSlideTabs.switchVTab(this, 'VTabStyle3', 'SelectedVTabStyle3');">
+					  <div class="TabLabel">
+						<%=_ctx.appRes(uicomponent.getName() + ".tab.label." + type)%>
+					  </div>
+					  <div class="SwitchButton"><span></span></div>
+				</div>
+			</div>
+			<div class="UIVTabContent" <%=currentBlockContentStyleClass%>><div>
+			<%
+				def groups = managersGroup.get(i) ;
+				for(group in groups) {
+			%>
+				<div class="FunctionItem">
+				  <a href="<%=group.event(group.getUIExtensionName())%>">
+				  <div class="ItemIcon DefaultItemIcon <%=group.getUIExtensionName()%>Icon"><span></span></div>
+				  </a>
+				  <a class="ItemLabel" href="<%=group.event(group.getUIExtensionName())%>">
+					<%=_ctx.appRes(uicomponent.getName()+".label." + group.getUIExtensionName())%>
+				  </a>
+				</div>
+			<%} %>
+			</div>
+		  </div>
+		</div>
+		<%
+				i++ ;
+			}
+		%>
+	</div>
+</div>

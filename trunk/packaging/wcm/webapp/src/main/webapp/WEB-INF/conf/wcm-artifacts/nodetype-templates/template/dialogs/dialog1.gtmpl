@@ -1,0 +1,53 @@
+<div class="UIForm FormLayout"> 
+	<% uiform.begin() %>
+  <div class="HorizontalLayout">	  
+   <table class="UIFormGrid">
+			<tr>
+			  <td class="FieldLabel"><label for="name">Name</label></td>
+			  <td class="FieldComponent">
+			  <%
+	        String[] fieldName = ["jcrPath=/node", "mixintype=exo:datetime,exo:owneable,mix:i18n", "editable=if-null", "validate=empty,name"] ;
+	        uicomponent.addTextField("name", fieldName) ; 
+      	%>	      
+        </td>
+			</tr>
+			<tr>
+        		<td class="FieldLabel"><label for="content-lang"><%=_ctx.appRes("ElementSet.dialog.label.language")%></label></td>
+				<td class="FieldComponent">
+				<%
+				  String lang = org.exoplatform.portal.webui.util.Util.getPortalRequestContext().getLocale().getLanguage();
+				  String[] fieldLang = ["jcrPath=/node/exo:language", "script=ecm-explorer/widget/FillSelectBoxWithLanguage.groovy", lang] ;
+				  uicomponent.addSelectBoxField("content-lang", fieldLang) ;
+				%>
+				</td>
+			</tr>
+			<tr>
+			  <td class="FieldLabel"><label for="templateFile">Template</label></td>
+			  <td class="FieldComponent">
+			  <style>
+			  	textarea#templateFile {
+			  		width: 600px !important;
+			  		height: 400px !important;
+			  	}
+			  </style>
+				<%
+	        String[] fieldTitle = ["jcrPath=/node/exo:templateFile", "validate=empty"] ;
+	        uicomponent.addTextAreaField("templateFile", fieldTitle) ;
+	      %>
+				</td>
+			</tr>  
+		</table>    
+		    
+		<%/* start render action*/%>
+		<div class="UIAction"> 
+	      <% for(action in uicomponent.getActions()) { 
+	      		 String actionLabel = _ctx.appRes(uicomponent.getName() + ".action." + action); 
+						 String link = uicomponent.event(action) ;
+	      %>
+		    <a href="javascript:void(0);" onclick="$link" class="ActionButton LightBlueStyle">$actionLabel</a>
+	      <%}%>          
+	  </div>
+	  <%/* end render action*/%>
+  </div>
+  <%uiform.end()%>
+</div>

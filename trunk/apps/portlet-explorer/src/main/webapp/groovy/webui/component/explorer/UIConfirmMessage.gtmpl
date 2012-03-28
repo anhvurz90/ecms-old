@@ -1,0 +1,39 @@
+<%
+	/**
+	 * Created by The eXo Platform SARL
+	 * Author : Dang Van Minh
+	 *          minh.dang@exoplatform.com
+	 * Sep 18, 2008
+	 * version: 2.2
+	 */
+
+	 import org.exoplatform.ecm.utils.text.Text;
+	 import org.apache.commons.lang.StringEscapeUtils;
+%>
+<div class="UIForm $uicomponent.id">
+  <%
+    String msgValue = _ctx.appRes(uicomponent.getMessageKey());
+    String[] msgArguments = uicomponent.getArguments();
+    if(msgArguments.length > 0) {
+	    for(i in 0..msgArguments.length-1){
+	  	  msgValue = msgValue.replaceAll("\\{" + i + "\\}", msgArguments[i]);
+		  }
+    }
+    msgValue = StringEscapeUtils.escapeHtml(Text.unescapeIllegalJcrChars(msgValue));    
+  %>
+  <div class="HorizontalLayout">
+    <div class="ClearFix">
+    	<div class="RecycleBinFull"><span></span></div>
+    	<div class="Text" title="<%=msgValue%>"><%=msgValue%></div>
+    	
+    </div>
+ <div class="UIAction">
+		<%
+		  for(action in uicomponent.getActions()) {
+		%>
+			<a onclick="<%=uicomponent.event(action)%>" class="ActionButton LightBlueStyle" href="javascript:void(0);"><%=_ctx.appRes("UIConfirmMessage.label." + action)%></a>
+		<%}%>
+	    </div>
+	 <%// end render action%>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<%
+/**
+ * Created by The eXo Platform SARL
+ * Author : Dang Van Minh
+ *          minh.dang@exoplatform.com
+ * Dec 29, 2006
+ * 3:28:26 PM 
+ */
+%>
+<%
+  import org.exoplatform.ecm.webui.utils.Utils; 
+  def lockedNodeList = uicomponent.getLockedNodeList(); 
+  int totalItems = uicomponent.getAllLockedNodes().size();
+  if(lockedNodeList == null) return;
+  int totalPages = uicomponent.getUIPageIterator().getAvailablePage();
+%>
+<div class="UIQueriesList" id="$uicomponent.id">
+  <% if (totalItems > 5) {%>
+  <div style="margin:1px 0px 5px 0px;">
+    <%
+      uicomponent.getUIPageIterator().setUseMaxSizeSetting(true);
+      _ctx.renderUIComponent(uicomponent.getUIPageIterator());
+    %>
+  </div>
+  <%}%>
+  <table class="UIGrid">
+    <thead>
+      <tr>
+  	    <th style="width:36px;"></th>
+  	    <th><%=_ctx.appRes("UILockNodeList.header.name")%></th>
+  	    <th><%=_ctx.appRes("UILockNodeList.header.hoderLock")%></th>  	    
+  	    <th style="width:75px;"><%=_ctx.appRes("UILockNodeList.header.action")%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        if (lockedNodeList.size() > 0) {
+        def rowClass = null ;
+  	    boolean even = true ;
+  	    for (node in lockedNodeList) {
+  	      if(even) rowClass = "EvenRow" ;  
+  	      else rowClass =  "OddRow" ; 
+  	      even = !even ;
+      %>
+          <tr class="$rowClass">
+            <td>
+            		<div title="$node.name" class="Icon16x16 default16x16Icon <%=Utils.getNodeTypeIcon(node, "16x16Icon")%>">
+					  							</div>
+					  					</td>
+            <td><div class="Text"><%= node.getPath(); %></div></td>
+            <td><div class="Text"><%= node.getLock().getLockOwner(); %></div></td>
+	          	<td>
+		          	<div class="ActionContainer">
+				          <img onclick="<%=uicomponent.event("UnLock", node.getPath())%>" title="<%=_ctx.appRes("UILockNodeList.tooltip.UnLock")%>" alt="<%=_ctx.appRes("UILockNodeList.tooltip.UnLock")%>" src="/eXoResources/skin/sharedImages/Blank.gif" class="Unlock16x16Icon" />
+			          </div>
+	          	</td>	                    
+          </tr>
+      <%}
+      } %>  
+    </tbody>
+  </table>
+  <% if (totalItems > 5) {%>
+  <div style="margin:1px 0px 5px 0px;">
+    <%
+      uicomponent.getUIPageIterator().setUseMaxSizeSetting(false);
+      _ctx.renderUIComponent(uicomponent.getUIPageIterator());
+    %>
+  </div>
+  <%}%>
+	<div class="UIAction">
+		<% for(action in uicomponent.getActions()) { %>
+		  <a onclick="<%=uicomponent.event(action)%>" class="ActionButton LightBlueStyle" href="javascript:void(0);"><%=_ctx.appRes("UILockNodeList.action." + action)%></a>
+		 <% } %>
+	</div>
+</div>
